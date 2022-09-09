@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Resources/Fonts/Kanit-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Nodes/WordleTile.cs" type="Script" id=2]
+[ext_resource path="res://Resources/Sprites/WordleTileSprite.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/WordleTileSpriteWrong.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/WordleTileSpriteRight.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Sprites/WordleTileSpriteAlmost.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Audio/SFX/Cancel.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Resources/Audio/SFX/Pop.ogg" type="AudioStream" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Tile" type="Sprite"]
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+textures = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
+textTweenDuration = 0.1
+largeSize = 1.5
+tileTweenDuration = 0.15
+
+[node name="Letter" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 26.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 25, 25 )
+custom_fonts/font = SubResource( 1 )
+text = "w"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="TypingAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 8 )
+
+[node name="CancelAudio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 7 )
